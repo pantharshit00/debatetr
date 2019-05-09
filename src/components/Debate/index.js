@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ContestentCard from '../ContestentCard';
+import { UserContext } from '../MainView';
 
-export default function index({ data, canVote, setCanVote }) {
+export default function Debate({ data, canVote, setCanVote }) {
   const [user1, user2] = data;
+  const [user] = useContext(UserContext);
   return (
     <Grid container spacing={2}>
       <Grid item xs={12}>
@@ -18,6 +20,7 @@ export default function index({ data, canVote, setCanVote }) {
           votes={user1.votes}
           canVote={canVote}
           setCanVote={setCanVote}
+          isDebator={user.debateUser}
         />
       </Grid>
       <Grid item xs={12}>
@@ -36,6 +39,7 @@ export default function index({ data, canVote, setCanVote }) {
           votes={user2.votes}
           canVote={canVote}
           setCanVote={setCanVote}
+          isDebator={user.debateUser}
         />
       </Grid>
     </Grid>

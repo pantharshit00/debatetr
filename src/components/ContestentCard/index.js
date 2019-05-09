@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -52,7 +53,11 @@ function ContestentCard({
           size="small"
           color="primary"
         >
-          {canVote ? 'Vote' : 'Wait 10s to cast next vote'}
+          {canVote
+            ? isDebator
+              ? 'You are debator so you cant vote'
+              : 'Vote'
+            : 'Wait 10s to cast next vote'}
         </Button>
         <Button disabled size="small" color="secondary">
           {votes}
